@@ -69,6 +69,10 @@ internal static class Program
                 options.SaveTokens = true;
                 options.Scope.Add("email");
                 options.Scope.Add("profile");
+                options.CorrelationCookie.SecurePolicy = CookieSecurePolicy.None;
+                options.CorrelationCookie.SameSite = SameSiteMode.Lax;
+                options.CorrelationCookie.HttpOnly = true;
+                options.CorrelationCookie.IsEssential = true;
             });
             
             // Add health checks
