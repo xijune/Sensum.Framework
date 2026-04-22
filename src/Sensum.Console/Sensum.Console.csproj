@@ -15,7 +15,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="ZeroLog" Version="2.2.0" />
+      <PackageReference Include="ZeroLog" Version="2.6.1" />
     </ItemGroup>
 
     <ItemGroup>
