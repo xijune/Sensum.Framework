@@ -1,4 +1,4 @@
-```gitignore
+```
 # Build artifacts
 bin/
 obj/
@@ -10,28 +10,31 @@ obj/
 # Dependencies
 packages/
 node_modules/
+*.user
+*.userosscache
+*.sln.docstates
 
 # Logs
 *.log
+logs/
 
-# Environment
+# Environment specific
 .env
 .env.local
-*.env.*
+*.local
 
-# Editor/IDE
-.vscode/
-.idea/
-*.user
-*.userosscache
-*.suo
-*.csproj.user
-
-# OS
+# OS generated files
 .DS_Store
 Thumbs.db
 
-# Test coverage
-coverage/
-*.coveragexml
+# User-specific files
+.vs/
+.idea/
+*.swp
+*.swo
+
+# Compiled files
+*.compiled
+**/Debug/
+**/Release/
 ```

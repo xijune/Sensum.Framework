@@ -55,7 +55,72 @@ public static class ApiEndpoints
             });
         });
         
-        // Authentication endpoints (no auth required)
+        // Google Authentication endpoints
+        app.MapGet("/api/auth/google", () =>
+        {
+            return Results.Challenge(new AuthenticationProperties { RedirectUri = "/api/auth/google/callback" }, new[] { GoogleDefaults.AuthenticationScheme });
+        });
+        
+        app.MapGet("/api/auth/google/callback", async (HttpContext context, [FromServices] ILogger<Program> logger) =>
+        {
+            try
+            {
+                var result = await context.AuthenticateAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+                
+                if (result.Succeeded && result.Principal?.Identity?.IsAuthenticated == true)
+                {
+                    var email = result.Principal.FindFirst(System.Security.Claims.ClaimTypes.Email)?.Value ?? 
+                               result.Principal.FindFirst("email")?.Value ?? "unknown";
+                    
+                    logger.LogInformation("Google login successful for user: {Email}", email);
+                    
+                    return Results.Redirect("/?auth=success&email=" + Uri.EscapeDataString(email));
+                }
+                
+                return Results.Redirect("/?auth=failed");
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, "Error during Google authentication callback");
+                return Results.Redirect("/?auth=error");
+            }
+        });
+        
+        app.MapPost("/api/auth/logout", async (HttpContext context) =>
+        {
+            await context.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return Results.Ok(new ApiResponse<object> { Success = true, Data = new { message = "Logged out successfully" } });
+        });
+        
+        app.MapGet("/api/auth/me", (HttpContext context) =>
+        {
+            if (context.User.Identity?.IsAuthenticated == true)
+            {
+                var email = context.User.FindFirst(System.Security.Claims.ClaimTypes.Email)?.Value ?? 
+                           context.User.FindFirst("email")?.Value ?? "unknown";
+                var name = context.User.FindFirst(System.Security.Claims.ClaimTypes.Name)?.Value ?? 
+                          context.User.FindFirst("name")?.Value ?? email;
+                
+                return Results.Ok(new ApiResponse<object> 
+                { 
+                    Success = true, 
+                    Data = new { 
+                        isAuthenticated = true, 
+                        email, 
+                        name,
+                        provider = "google"
+                    } 
+                });
+            }
+            
+            return Results.Ok(new ApiResponse<object> 
+            { 
+                Success = true, 
+                Data = new { isAuthenticated = false } 
+            });
+        });
+        
+        // Legacy username/password authentication (kept for backward compatibility)
         app.MapPost("/api/auth/register", async (HttpContext context) =>
         {
             try
@@ -161,7 +226,7 @@ public static class ApiEndpoints
                 LastConnectedAt = b.LastConnectedAt
             }).ToList();
             return Results.Ok(new ApiResponse<List<BotDto>> { Data = bots });
-        })/*.RequireAuthorization()*/; // Uncomment when auth is fully configured
+        });
 
         app.MapPost("/api/bots", async (HttpContext context) =>
         {
@@ -222,7 +287,7 @@ public static class ApiEndpoints
                 Log.Error(ex, "Error adding bot");
                 return Results.StatusCode(500);
             }
-        })/*.RequireAuthorization()*/;
+        });
 
         app.MapPost("/api/bots/{id}/connect", (string id) =>
         {
@@ -250,7 +315,7 @@ public static class ApiEndpoints
                 Log.Error(ex, "Error connecting bot {BotId}", id);
                 return Results.StatusCode(500);
             }
-        })/*.RequireAuthorization()*/;
+        });
 
         app.MapPost("/api/bots/{id}/disconnect", (string id) =>
         {
@@ -278,7 +343,7 @@ public static class ApiEndpoints
                 Log.Error(ex, "Error disconnecting bot {BotId}", id);
                 return Results.StatusCode(500);
             }
-        })/*.RequireAuthorization()*/;
+        });
 
         app.MapDelete("/api/bots/{id}", (string id) =>
         {
@@ -296,7 +361,7 @@ public static class ApiEndpoints
                 Success = false, 
                 Error = "Bot not found" 
             });
-        })/*.RequireAuthorization()*/;
+        });
         
         // SignalR hub for real-time updates
         app.MapHub<BotHub>("/hubs/bots");
