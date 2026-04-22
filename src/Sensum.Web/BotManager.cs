@@ -5,6 +5,11 @@ using System.Text.Json;
 using System.Threading.Channels;
 using BCrypt.Net;
 using Microsoft.AspNetCore.SignalR;
+using Sensum.Console;
+using Sensum.Framework;
+using Sensum.Framework.Entities;
+using Sensum.Framework.Growtopia;
+using Sensum.Framework.Growtopia.Player;
 using Serilog;
 
 namespace Sensum.Web;

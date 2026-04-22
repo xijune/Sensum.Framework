@@ -27,14 +27,8 @@ logs/
 .DS_Store
 Thumbs.db
 
-# User-specific files
-.vs/
-.idea/
-*.swp
-*.swo
-
-# Compiled files
-*.compiled
-**/Debug/
-**/Release/
+# Test coverage
+coverage/
+*.coveragexml
 ```
+.vs/Sensum.Framework/FileContentIndex
