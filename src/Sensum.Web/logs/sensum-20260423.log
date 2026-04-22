@@ -330,3 +330,16 @@ Microsoft.AspNetCore.Authentication.AuthenticationFailureException: An error was
    at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
    at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
    at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2026-04-23 01:04:08.898 +02:00 [INF] Starting Sensum Web Interface
+2026-04-23 01:04:09.023 +02:00 [INF] Sensum Web Interface starting on http://localhost:5000
+2026-04-23 01:04:09.025 +02:00 [INF] Press Ctrl+C to stop
+2026-04-23 01:04:11.695 +02:00 [INF] HTTP GET /index.html responded 304 in 5.1779ms
+2026-04-23 01:04:12.165 +02:00 [INF] HTTP POST /hubs/bots/negotiate responded 200 in 32.6298ms
+2026-04-23 01:04:12.178 +02:00 [INF] HTTP GET /api/auth/me responded 200 in 45.9036ms
+2026-04-23 01:04:12.178 +02:00 [INF] HTTP GET /api/health responded 200 in 46.2916ms
+2026-04-23 01:04:12.187 +02:00 [INF] HTTP GET /api/bots responded 200 in 14.2146ms
+2026-04-23 01:04:12.544 +02:00 [INF] Client connected: UmnC9cNwiPs_QH4KEArpOA
+2026-04-23 01:04:13.957 +02:00 [INF] HTTP POST /api/auth/logout responded 200 in 6.5176ms
+2026-04-23 01:04:14.763 +02:00 [INF] HTTP GET /api/auth/google responded 302 in 8.1018ms
+2026-04-23 01:04:15.078 +02:00 [INF] Client disconnected: UmnC9cNwiPs_QH4KEArpOA
+2026-04-23 01:04:15.083 +02:00 [INF] HTTP GET /hubs/bots responded 101 in 2572.3589ms
