@@ -1,12 +1,13 @@
 # Sensum Web - Bot Management System
 
-A modern, secure web interface for managing Growtopia bots with real-time updates.
+A modern, secure web interface for managing Growtopia bots with real-time updates and Google authentication.
 
 ## 🚀 Improvements Implemented
 
-### Security Enhancements
-- **Password Encryption**: BCrypt hashing for all user passwords
-- **Authentication System**: JWT-based authentication with registration/login endpoints
+### Authentication & Security
+- **Google OAuth 2.0**: Sign in with Google account support
+- **Cookie-based Authentication**: Secure session management with 24-hour expiration
+- **Password Encryption**: BCrypt hashing for legacy username/password authentication
 - **Input Validation**: Comprehensive validation for all user inputs (GrowID, password length checks)
 - **XSS Protection**: HTML escaping in frontend to prevent cross-site scripting
 - **Secure Random Generation**: Cryptographically secure random string generation for secrets
@@ -43,6 +44,8 @@ A modern, secure web interface for managing Growtopia bots with real-time update
 - **Health Check**: Public health endpoint for monitoring
 
 ### Frontend Enhancements
+- **Google Sign-In Button**: Prominent Google authentication button with logo
+- **User Session Display**: Shows logged-in user email/name with logout option
 - **Toast Notifications**: User-friendly feedback for actions
 - **Loading States**: Button disabled states during async operations
 - **Responsive Design**: Mobile-friendly layout
@@ -51,8 +54,8 @@ A modern, secure web interface for managing Growtopia bots with real-time update
 - **Auto-scroll Console**: Console automatically scrolls to latest messages
 
 ### Configuration
-- **Environment Variables**: Configurable port via `SENSUM_PORT`
-- **appsettings.json**: Proper configuration file structure
+- **Environment Variables**: Configurable port via `SENSUM_PORT`, Google credentials via `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET`
+- **appsettings.json**: Google OAuth configuration and other settings
 - **CORS Configuration**: Configurable CORS policies
 - **User Secrets**: Support for sensitive configuration via User Secrets
 

@@ -1,5 +1,7 @@
 using Serilog;
 using Serilog.Events;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.Google;
 
 namespace Sensum.Web;
 
@@ -44,24 +46,30 @@ internal static class Program
             // Add SignalR
             builder.Services.AddSignalR();
             
-            // Add authentication (commented out until fully configured)
-            // builder.Services.AddAuthentication(options =>
-            // {
-            //     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-            //     options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            // })
-            // .AddJwtBearer(options =>
-            // {
-            //     options.TokenValidationParameters = new TokenValidationParameters
-            //     {
-            //         ValidateIssuer = false,
-            //         ValidateAudience = false,
-            //         ValidateLifetime = true,
-            //         ValidateIssuerSigningKey = true,
-            //         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(
-            //             Environment.GetEnvironmentVariable("SENSUM_JWT_SECRET") ?? GenerateSecureKey()))
-            //     };
-            // });
+            // Add Google Authentication
+            builder.Services.AddAuthentication(options =>
+            {
+                options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = GoogleDefaults.AuthenticationScheme;
+            })
+            .AddCookie(options =>
+            {
+                options.LoginPath = "/api/auth/login";
+                options.LogoutPath = "/api/auth/logout";
+                options.ExpireTimeSpan = TimeSpan.FromHours(24);
+                options.SlidingExpiration = true;
+            })
+            .AddGoogle(options =>
+            {
+                var googleConfig = builder.Configuration.GetSection("Authentication:Google");
+                options.ClientId = googleConfig["ClientId"] ?? Environment.GetEnvironmentVariable("GOOGLE_CLIENT_ID") ?? "";
+                options.ClientSecret = googleConfig["ClientSecret"] ?? Environment.GetEnvironmentVariable("GOOGLE_CLIENT_SECRET") ?? "";
+                options.CallbackPath = "/api/auth/google/callback";
+                options.SaveTokens = true;
+                options.Scope.Add("email");
+                options.Scope.Add("profile");
+            });
             
             // Add health checks
             builder.Services.AddHealthChecks();
@@ -80,6 +88,10 @@ internal static class Program
             // Serve static files (index.html)
             app.UseDefaultFiles();
             app.UseStaticFiles();
+            
+            // Use authentication
+            app.UseAuthentication();
+            app.UseAuthorization();
             
             // Map API endpoints
             app.MapBotApi();
@@ -100,12 +112,5 @@ internal static class Program
         {
             Log.CloseAndFlush();
         }
-    }
-    
-    private static string GenerateSecureKey()
-    {
-        var bytes = new byte[32];
-        System.Security.Cryptography.RandomNumberGenerator.Fill(bytes);
-        return Convert.ToBase64String(bytes);
     }
 }
