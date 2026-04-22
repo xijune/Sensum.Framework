@@ -1,1 +1,3 @@
 Nothing should be ignored based on the provided file changes. The modification of 'src/Sensum.Web/Program.cs' is a source code file and does not require any .gitignore entries.
+.vs/Sensum.Framework/FileContentIndex
+.vs/Sensum.Framework/DesignTimeBuild
