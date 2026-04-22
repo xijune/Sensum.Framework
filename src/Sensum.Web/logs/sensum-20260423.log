@@ -1,0 +1,345 @@
+2026-04-23 00:23:52.921 +02:00 [INF] Starting Sensum Web Interface
+2026-04-23 00:23:53.061 +02:00 [INF] Sensum Web Interface starting on http://localhost:5000
+2026-04-23 00:23:53.063 +02:00 [INF] Press Ctrl+C to stop
+2026-04-23 00:23:58.636 +02:00 [INF] HTTP GET /index.html responded 200 in 17.7416ms
+2026-04-23 00:23:59.070 +02:00 [INF] HTTP POST /hubs/bots/negotiate responded 200 in 10.9328ms
+2026-04-23 00:23:59.090 +02:00 [INF] HTTP GET /api/bots responded 200 in 32.3702ms
+2026-04-23 00:23:59.090 +02:00 [INF] HTTP GET /api/health responded 200 in 31.7264ms
+2026-04-23 00:23:59.481 +02:00 [INF] Client connected: SjyEgDrvIMbbrfuW8y7XHQ
+2026-04-23 00:24:16.866 +02:00 [INF] Client disconnected: SjyEgDrvIMbbrfuW8y7XHQ
+2026-04-23 00:24:16.869 +02:00 [INF] HTTP POST /hubs/bots/negotiate responded 200 in 0.2192ms
+2026-04-23 00:24:16.869 +02:00 [INF] HTTP GET /hubs/bots responded 101 in 17433.2941ms
+2026-04-23 00:36:43.541 +02:00 [INF] Starting Sensum Web Interface
+2026-04-23 00:36:43.689 +02:00 [INF] Sensum Web Interface starting on http://localhost:5000
+2026-04-23 00:36:43.690 +02:00 [INF] Press Ctrl+C to stop
+2026-04-23 00:36:46.762 +02:00 [INF] HTTP GET /index.html responded 200 in 12.5140ms
+2026-04-23 00:36:47.182 +02:00 [ERR] HTTP POST /hubs/bots/negotiate responded 500 in 27.2599ms
+System.ArgumentException: The value cannot be an empty string. (Parameter 'ClientId')
+   at System.ArgumentException.ThrowNullOrEmptyException(String argument, String paramName)
+   at System.ArgumentException.ThrowIfNullOrEmpty(String argument, String paramName)
+   at Microsoft.AspNetCore.Authentication.OAuth.OAuthOptions.Validate()
+   at Microsoft.AspNetCore.Authentication.RemoteAuthenticationOptions.Validate(String scheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationBuilder.<>c__DisplayClass4_0`2.<AddSchemeHelper>b__1(TOptions o)
+   at Microsoft.Extensions.Options.ValidateOptions`1.Validate(String name, TOptions options)
+   at Microsoft.Extensions.Options.OptionsFactory`1.Create(String name)
+   at System.Lazy`1.ViaFactory(LazyThreadSafetyMode mode)
+   at System.Lazy`1.ExecutionAndPublication(LazyHelper executionAndPublication, Boolean useDefaultConstructor)
+   at System.Lazy`1.CreateValue()
+   at Microsoft.Extensions.Options.OptionsCache`1.GetOrAdd[TArg](String name, Func`3 createOptions, TArg factoryArgument)
+   at Microsoft.Extensions.Options.OptionsMonitor`1.Get(String name)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandler`1.InitializeAsync(AuthenticationScheme scheme, HttpContext context)
+   at System.Lazy`1.CreateValue()
+--- End of stack trace from previous location ---
+   at Microsoft.Extensions.Options.OptionsCache`1.GetOrAdd[TArg](String name, Func`3 createOptions, TArg factoryArgument)
+   at Microsoft.Extensions.Options.OptionsMonitor`1.Get(String name)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandler`1.InitializeAsync(AuthenticationScheme scheme, HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at System.Lazy`1.CreateValue()
+   at Microsoft.Extensions.Options.OptionsCache`1.GetOrAdd[TArg](String name, Func`3 createOptions, TArg factoryArgument)
+   at Microsoft.Extensions.Options.OptionsMonitor`1.Get(String name)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandler`1.InitializeAsync(AuthenticationScheme scheme, HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2026-04-23 00:36:47.182 +02:00 [ERR] HTTP GET /api/auth/me responded 500 in 27.5502ms
+System.ArgumentException: The value cannot be an empty string. (Parameter 'ClientId')
+   at System.ArgumentException.ThrowNullOrEmptyException(String argument, String paramName)
+   at System.ArgumentException.ThrowIfNullOrEmpty(String argument, String paramName)
+   at Microsoft.AspNetCore.Authentication.OAuth.OAuthOptions.Validate()
+   at Microsoft.AspNetCore.Authentication.RemoteAuthenticationOptions.Validate(String scheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationBuilder.<>c__DisplayClass4_0`2.<AddSchemeHelper>b__1(TOptions o)
+   at Microsoft.Extensions.Options.ValidateOptions`1.Validate(String name, TOptions options)
+   at Microsoft.Extensions.Options.OptionsFactory`1.Create(String name)
+   at System.Lazy`1.ViaFactory(LazyThreadSafetyMode mode)
+   at System.Lazy`1.ExecutionAndPublication(LazyHelper executionAndPublication, Boolean useDefaultConstructor)
+   at System.Lazy`1.CreateValue()
+   at Microsoft.Extensions.Options.OptionsCache`1.GetOrAdd[TArg](String name, Func`3 createOptions, TArg factoryArgument)
+   at Microsoft.Extensions.Options.OptionsMonitor`1.Get(String name)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandler`1.InitializeAsync(AuthenticationScheme scheme, HttpContext context)
+   at System.Lazy`1.CreateValue()
+--- End of stack trace from previous location ---
+   at Microsoft.Extensions.Options.OptionsCache`1.GetOrAdd[TArg](String name, Func`3 createOptions, TArg factoryArgument)
+   at Microsoft.Extensions.Options.OptionsMonitor`1.Get(String name)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandler`1.InitializeAsync(AuthenticationScheme scheme, HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at System.Lazy`1.CreateValue()
+   at Microsoft.Extensions.Options.OptionsCache`1.GetOrAdd[TArg](String name, Func`3 createOptions, TArg factoryArgument)
+   at Microsoft.Extensions.Options.OptionsMonitor`1.Get(String name)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandler`1.InitializeAsync(AuthenticationScheme scheme, HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2026-04-23 00:36:47.182 +02:00 [ERR] HTTP GET /api/health responded 500 in 27.5182ms
+System.ArgumentException: The value cannot be an empty string. (Parameter 'ClientId')
+   at System.ArgumentException.ThrowNullOrEmptyException(String argument, String paramName)
+   at System.ArgumentException.ThrowIfNullOrEmpty(String argument, String paramName)
+   at Microsoft.AspNetCore.Authentication.OAuth.OAuthOptions.Validate()
+   at Microsoft.AspNetCore.Authentication.RemoteAuthenticationOptions.Validate(String scheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationBuilder.<>c__DisplayClass4_0`2.<AddSchemeHelper>b__1(TOptions o)
+   at Microsoft.Extensions.Options.ValidateOptions`1.Validate(String name, TOptions options)
+   at Microsoft.Extensions.Options.OptionsFactory`1.Create(String name)
+   at System.Lazy`1.ViaFactory(LazyThreadSafetyMode mode)
+   at System.Lazy`1.ExecutionAndPublication(LazyHelper executionAndPublication, Boolean useDefaultConstructor)
+   at System.Lazy`1.CreateValue()
+   at Microsoft.Extensions.Options.OptionsCache`1.GetOrAdd[TArg](String name, Func`3 createOptions, TArg factoryArgument)
+   at Microsoft.Extensions.Options.OptionsMonitor`1.Get(String name)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandler`1.InitializeAsync(AuthenticationScheme scheme, HttpContext context)
+   at System.Lazy`1.CreateValue()
+--- End of stack trace from previous location ---
+   at Microsoft.Extensions.Options.OptionsCache`1.GetOrAdd[TArg](String name, Func`3 createOptions, TArg factoryArgument)
+   at Microsoft.Extensions.Options.OptionsMonitor`1.Get(String name)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandler`1.InitializeAsync(AuthenticationScheme scheme, HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at System.Lazy`1.CreateValue()
+   at Microsoft.Extensions.Options.OptionsCache`1.GetOrAdd[TArg](String name, Func`3 createOptions, TArg factoryArgument)
+   at Microsoft.Extensions.Options.OptionsMonitor`1.Get(String name)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandler`1.InitializeAsync(AuthenticationScheme scheme, HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2026-04-23 00:36:47.226 +02:00 [ERR] An unhandled exception has occurred while executing the request.
+System.ArgumentException: The value cannot be an empty string. (Parameter 'ClientId')
+   at System.ArgumentException.ThrowNullOrEmptyException(String argument, String paramName)
+   at System.ArgumentException.ThrowIfNullOrEmpty(String argument, String paramName)
+   at Microsoft.AspNetCore.Authentication.OAuth.OAuthOptions.Validate()
+   at Microsoft.AspNetCore.Authentication.RemoteAuthenticationOptions.Validate(String scheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationBuilder.<>c__DisplayClass4_0`2.<AddSchemeHelper>b__1(TOptions o)
+   at Microsoft.Extensions.Options.ValidateOptions`1.Validate(String name, TOptions options)
+   at Microsoft.Extensions.Options.OptionsFactory`1.Create(String name)
+   at System.Lazy`1.ViaFactory(LazyThreadSafetyMode mode)
+   at System.Lazy`1.ExecutionAndPublication(LazyHelper executionAndPublication, Boolean useDefaultConstructor)
+   at System.Lazy`1.CreateValue()
+   at Microsoft.Extensions.Options.OptionsCache`1.GetOrAdd[TArg](String name, Func`3 createOptions, TArg factoryArgument)
+   at Microsoft.Extensions.Options.OptionsMonitor`1.Get(String name)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandler`1.InitializeAsync(AuthenticationScheme scheme, HttpContext context)
+   at System.Lazy`1.CreateValue()
+--- End of stack trace from previous location ---
+   at Microsoft.Extensions.Options.OptionsCache`1.GetOrAdd[TArg](String name, Func`3 createOptions, TArg factoryArgument)
+   at Microsoft.Extensions.Options.OptionsMonitor`1.Get(String name)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandler`1.InitializeAsync(AuthenticationScheme scheme, HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at System.Lazy`1.CreateValue()
+   at Microsoft.Extensions.Options.OptionsCache`1.GetOrAdd[TArg](String name, Func`3 createOptions, TArg factoryArgument)
+   at Microsoft.Extensions.Options.OptionsMonitor`1.Get(String name)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandler`1.InitializeAsync(AuthenticationScheme scheme, HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2026-04-23 00:36:47.237 +02:00 [ERR] An unhandled exception has occurred while executing the request.
+System.ArgumentException: The value cannot be an empty string. (Parameter 'ClientId')
+   at System.ArgumentException.ThrowNullOrEmptyException(String argument, String paramName)
+   at System.ArgumentException.ThrowIfNullOrEmpty(String argument, String paramName)
+   at Microsoft.AspNetCore.Authentication.OAuth.OAuthOptions.Validate()
+   at Microsoft.AspNetCore.Authentication.RemoteAuthenticationOptions.Validate(String scheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationBuilder.<>c__DisplayClass4_0`2.<AddSchemeHelper>b__1(TOptions o)
+   at Microsoft.Extensions.Options.ValidateOptions`1.Validate(String name, TOptions options)
+   at Microsoft.Extensions.Options.OptionsFactory`1.Create(String name)
+   at System.Lazy`1.ViaFactory(LazyThreadSafetyMode mode)
+--- End of stack trace from previous location ---
+   at System.Lazy`1.CreateValue()
+   at Microsoft.Extensions.Options.OptionsCache`1.GetOrAdd[TArg](String name, Func`3 createOptions, TArg factoryArgument)
+   at Microsoft.Extensions.Options.OptionsMonitor`1.Get(String name)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandler`1.InitializeAsync(AuthenticationScheme scheme, HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2026-04-23 00:36:47.248 +02:00 [ERR] An unhandled exception has occurred while executing the request.
+System.ArgumentException: The value cannot be an empty string. (Parameter 'ClientId')
+   at System.ArgumentException.ThrowNullOrEmptyException(String argument, String paramName)
+   at System.ArgumentException.ThrowIfNullOrEmpty(String argument, String paramName)
+   at Microsoft.AspNetCore.Authentication.OAuth.OAuthOptions.Validate()
+   at Microsoft.AspNetCore.Authentication.RemoteAuthenticationOptions.Validate(String scheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationBuilder.<>c__DisplayClass4_0`2.<AddSchemeHelper>b__1(TOptions o)
+   at Microsoft.Extensions.Options.ValidateOptions`1.Validate(String name, TOptions options)
+   at Microsoft.Extensions.Options.OptionsFactory`1.Create(String name)
+   at System.Lazy`1.ViaFactory(LazyThreadSafetyMode mode)
+--- End of stack trace from previous location ---
+   at System.Lazy`1.CreateValue()
+   at Microsoft.Extensions.Options.OptionsCache`1.GetOrAdd[TArg](String name, Func`3 createOptions, TArg factoryArgument)
+   at Microsoft.Extensions.Options.OptionsMonitor`1.Get(String name)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandler`1.InitializeAsync(AuthenticationScheme scheme, HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2026-04-23 00:36:47.263 +02:00 [ERR] HTTP GET /api/bots responded 500 in 1.4696ms
+System.ArgumentException: The value cannot be an empty string. (Parameter 'ClientId')
+   at System.ArgumentException.ThrowNullOrEmptyException(String argument, String paramName)
+   at System.ArgumentException.ThrowIfNullOrEmpty(String argument, String paramName)
+   at Microsoft.AspNetCore.Authentication.OAuth.OAuthOptions.Validate()
+   at Microsoft.AspNetCore.Authentication.RemoteAuthenticationOptions.Validate(String scheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationBuilder.<>c__DisplayClass4_0`2.<AddSchemeHelper>b__1(TOptions o)
+   at Microsoft.Extensions.Options.ValidateOptions`1.Validate(String name, TOptions options)
+   at Microsoft.Extensions.Options.OptionsFactory`1.Create(String name)
+   at System.Lazy`1.ViaFactory(LazyThreadSafetyMode mode)
+--- End of stack trace from previous location ---
+   at System.Lazy`1.CreateValue()
+   at Microsoft.Extensions.Options.OptionsCache`1.GetOrAdd[TArg](String name, Func`3 createOptions, TArg factoryArgument)
+   at Microsoft.Extensions.Options.OptionsMonitor`1.Get(String name)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandler`1.InitializeAsync(AuthenticationScheme scheme, HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2026-04-23 00:36:47.276 +02:00 [ERR] An unhandled exception has occurred while executing the request.
+System.ArgumentException: The value cannot be an empty string. (Parameter 'ClientId')
+   at System.ArgumentException.ThrowNullOrEmptyException(String argument, String paramName)
+   at System.ArgumentException.ThrowIfNullOrEmpty(String argument, String paramName)
+   at Microsoft.AspNetCore.Authentication.OAuth.OAuthOptions.Validate()
+   at Microsoft.AspNetCore.Authentication.RemoteAuthenticationOptions.Validate(String scheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationBuilder.<>c__DisplayClass4_0`2.<AddSchemeHelper>b__1(TOptions o)
+   at Microsoft.Extensions.Options.ValidateOptions`1.Validate(String name, TOptions options)
+   at Microsoft.Extensions.Options.OptionsFactory`1.Create(String name)
+   at System.Lazy`1.ViaFactory(LazyThreadSafetyMode mode)
+--- End of stack trace from previous location ---
+   at System.Lazy`1.CreateValue()
+   at Microsoft.Extensions.Options.OptionsCache`1.GetOrAdd[TArg](String name, Func`3 createOptions, TArg factoryArgument)
+   at Microsoft.Extensions.Options.OptionsMonitor`1.Get(String name)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandler`1.InitializeAsync(AuthenticationScheme scheme, HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2026-04-23 00:36:49.184 +02:00 [ERR] HTTP GET /api/auth/google responded 500 in 0.1946ms
+System.ArgumentException: The value cannot be an empty string. (Parameter 'ClientId')
+   at System.ArgumentException.ThrowNullOrEmptyException(String argument, String paramName)
+   at System.ArgumentException.ThrowIfNullOrEmpty(String argument, String paramName)
+   at Microsoft.AspNetCore.Authentication.OAuth.OAuthOptions.Validate()
+   at Microsoft.AspNetCore.Authentication.RemoteAuthenticationOptions.Validate(String scheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationBuilder.<>c__DisplayClass4_0`2.<AddSchemeHelper>b__1(TOptions o)
+   at Microsoft.Extensions.Options.ValidateOptions`1.Validate(String name, TOptions options)
+   at Microsoft.Extensions.Options.OptionsFactory`1.Create(String name)
+   at System.Lazy`1.ViaFactory(LazyThreadSafetyMode mode)
+--- End of stack trace from previous location ---
+   at System.Lazy`1.CreateValue()
+   at Microsoft.Extensions.Options.OptionsCache`1.GetOrAdd[TArg](String name, Func`3 createOptions, TArg factoryArgument)
+   at Microsoft.Extensions.Options.OptionsMonitor`1.Get(String name)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandler`1.InitializeAsync(AuthenticationScheme scheme, HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2026-04-23 00:36:49.192 +02:00 [ERR] An unhandled exception has occurred while executing the request.
+System.ArgumentException: The value cannot be an empty string. (Parameter 'ClientId')
+   at System.ArgumentException.ThrowNullOrEmptyException(String argument, String paramName)
+   at System.ArgumentException.ThrowIfNullOrEmpty(String argument, String paramName)
+   at Microsoft.AspNetCore.Authentication.OAuth.OAuthOptions.Validate()
+   at Microsoft.AspNetCore.Authentication.RemoteAuthenticationOptions.Validate(String scheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationBuilder.<>c__DisplayClass4_0`2.<AddSchemeHelper>b__1(TOptions o)
+   at Microsoft.Extensions.Options.ValidateOptions`1.Validate(String name, TOptions options)
+   at Microsoft.Extensions.Options.OptionsFactory`1.Create(String name)
+   at System.Lazy`1.ViaFactory(LazyThreadSafetyMode mode)
+--- End of stack trace from previous location ---
+   at System.Lazy`1.CreateValue()
+   at Microsoft.Extensions.Options.OptionsCache`1.GetOrAdd[TArg](String name, Func`3 createOptions, TArg factoryArgument)
+   at Microsoft.Extensions.Options.OptionsMonitor`1.Get(String name)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandler`1.InitializeAsync(AuthenticationScheme scheme, HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandlerProvider.GetHandlerAsync(HttpContext context, String authenticationScheme)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2026-04-23 00:38:21.902 +02:00 [INF] Starting Sensum Web Interface
+2026-04-23 00:38:22.022 +02:00 [INF] Sensum Web Interface starting on http://localhost:5000
+2026-04-23 00:38:22.025 +02:00 [INF] Press Ctrl+C to stop
+2026-04-23 00:38:24.128 +02:00 [INF] HTTP GET /index.html responded 304 in 5.0525ms
+2026-04-23 00:38:24.578 +02:00 [INF] HTTP POST /hubs/bots/negotiate responded 200 in 17.9100ms
+2026-04-23 00:38:24.586 +02:00 [INF] HTTP GET /api/auth/me responded 200 in 25.9838ms
+2026-04-23 00:38:24.586 +02:00 [INF] HTTP GET /api/health responded 200 in 26.3432ms
+2026-04-23 00:38:24.592 +02:00 [INF] HTTP GET /api/bots responded 200 in 10.0081ms
+2026-04-23 00:38:24.963 +02:00 [INF] Client connected: IK-ThbRMdiXKOQbyaylllA
+2026-04-23 00:38:26.671 +02:00 [INF] HTTP GET /api/auth/google responded 302 in 7.9551ms
+2026-04-23 00:38:26.917 +02:00 [INF] Client disconnected: IK-ThbRMdiXKOQbyaylllA
+2026-04-23 00:38:26.922 +02:00 [INF] HTTP GET /hubs/bots responded 101 in 1992.2241ms
+2026-04-23 00:41:24.250 +02:00 [INF] Starting Sensum Web Interface
+2026-04-23 00:41:24.373 +02:00 [INF] Sensum Web Interface starting on http://localhost:5000
+2026-04-23 00:41:24.375 +02:00 [INF] Press Ctrl+C to stop
+2026-04-23 00:41:31.505 +02:00 [INF] HTTP GET /index.html responded 304 in 5.9306ms
+2026-04-23 00:41:31.947 +02:00 [INF] HTTP POST /hubs/bots/negotiate responded 200 in 29.4971ms
+2026-04-23 00:41:31.967 +02:00 [INF] HTTP GET /api/auth/me responded 200 in 49.3550ms
+2026-04-23 00:41:31.967 +02:00 [INF] HTTP GET /api/bots responded 200 in 15.6849ms
+2026-04-23 00:41:31.968 +02:00 [INF] HTTP GET /api/health responded 200 in 50.2081ms
+2026-04-23 00:41:32.305 +02:00 [INF] Client connected: 12OX5xWdjjTJ3CCyGyGxIQ
+2026-04-23 00:41:32.892 +02:00 [INF] HTTP GET /api/auth/google responded 302 in 9.0288ms
+2026-04-23 00:41:33.129 +02:00 [INF] Client disconnected: 12OX5xWdjjTJ3CCyGyGxIQ
+2026-04-23 00:41:33.134 +02:00 [INF] HTTP GET /hubs/bots responded 101 in 847.2992ms
+2026-04-23 00:41:37.857 +02:00 [INF] HTTP GET /api/auth/google/callback responded 302 in 368.6714ms
+2026-04-23 00:41:37.865 +02:00 [ERR] HTTP GET /api/auth/google/callback responded 500 in 0.6220ms
+Microsoft.AspNetCore.Authentication.AuthenticationFailureException: An error was encountered while handling the remote login.
+ ---> Microsoft.AspNetCore.Authentication.AuthenticationFailureException: The oauth state was missing or invalid.
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Authentication.RemoteAuthenticationHandler`1.HandleRequestAsync()
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2026-04-23 00:41:37.882 +02:00 [ERR] An unhandled exception has occurred while executing the request.
+Microsoft.AspNetCore.Authentication.AuthenticationFailureException: An error was encountered while handling the remote login.
+ ---> Microsoft.AspNetCore.Authentication.AuthenticationFailureException: The oauth state was missing or invalid.
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Authentication.RemoteAuthenticationHandler`1.HandleRequestAsync()
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2026-04-23 00:55:00.496 +02:00 [INF] Starting Sensum Web Interface
+2026-04-23 00:55:00.625 +02:00 [INF] Sensum Web Interface starting on http://localhost:5000
+2026-04-23 00:55:00.627 +02:00 [INF] Press Ctrl+C to stop
+2026-04-23 00:55:04.999 +02:00 [INF] HTTP GET /index.html responded 304 in 9.0168ms
+2026-04-23 00:55:05.449 +02:00 [INF] HTTP POST /hubs/bots/negotiate responded 200 in 27.6374ms
+2026-04-23 00:55:05.462 +02:00 [INF] HTTP GET /api/auth/me responded 200 in 43.4001ms
+2026-04-23 00:55:05.463 +02:00 [INF] HTTP GET /api/health responded 200 in 46.2522ms
+2026-04-23 00:55:05.474 +02:00 [INF] HTTP GET /api/bots responded 200 in 17.9277ms
+2026-04-23 00:55:05.811 +02:00 [INF] Client connected: FjB4vWrbIXoRx1TokJlhag
+2026-04-23 00:55:09.545 +02:00 [INF] HTTP POST /api/auth/logout responded 200 in 7.3808ms
+2026-04-23 00:55:11.005 +02:00 [INF] HTTP GET /api/auth/google responded 302 in 7.8185ms
+2026-04-23 00:55:11.299 +02:00 [INF] Client disconnected: FjB4vWrbIXoRx1TokJlhag
+2026-04-23 00:55:11.304 +02:00 [INF] HTTP GET /hubs/bots responded 101 in 5510.0008ms
+2026-04-23 00:55:13.959 +02:00 [INF] HTTP GET /api/auth/google/callback responded 302 in 365.2397ms
+2026-04-23 00:55:13.967 +02:00 [ERR] HTTP GET /api/auth/google/callback responded 500 in 0.3569ms
+Microsoft.AspNetCore.Authentication.AuthenticationFailureException: An error was encountered while handling the remote login.
+ ---> Microsoft.AspNetCore.Authentication.AuthenticationFailureException: The oauth state was missing or invalid.
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Authentication.RemoteAuthenticationHandler`1.HandleRequestAsync()
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2026-04-23 00:55:13.983 +02:00 [ERR] An unhandled exception has occurred while executing the request.
+Microsoft.AspNetCore.Authentication.AuthenticationFailureException: An error was encountered while handling the remote login.
+ ---> Microsoft.AspNetCore.Authentication.AuthenticationFailureException: The oauth state was missing or invalid.
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Authentication.RemoteAuthenticationHandler`1.HandleRequestAsync()
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2026-04-23 01:04:08.898 +02:00 [INF] Starting Sensum Web Interface
+2026-04-23 01:04:09.023 +02:00 [INF] Sensum Web Interface starting on http://localhost:5000
+2026-04-23 01:04:09.025 +02:00 [INF] Press Ctrl+C to stop
+2026-04-23 01:04:11.695 +02:00 [INF] HTTP GET /index.html responded 304 in 5.1779ms
+2026-04-23 01:04:12.165 +02:00 [INF] HTTP POST /hubs/bots/negotiate responded 200 in 32.6298ms
+2026-04-23 01:04:12.178 +02:00 [INF] HTTP GET /api/auth/me responded 200 in 45.9036ms
+2026-04-23 01:04:12.178 +02:00 [INF] HTTP GET /api/health responded 200 in 46.2916ms
+2026-04-23 01:04:12.187 +02:00 [INF] HTTP GET /api/bots responded 200 in 14.2146ms
+2026-04-23 01:04:12.544 +02:00 [INF] Client connected: UmnC9cNwiPs_QH4KEArpOA
+2026-04-23 01:04:13.957 +02:00 [INF] HTTP POST /api/auth/logout responded 200 in 6.5176ms
+2026-04-23 01:04:14.763 +02:00 [INF] HTTP GET /api/auth/google responded 302 in 8.1018ms
+2026-04-23 01:04:15.078 +02:00 [INF] Client disconnected: UmnC9cNwiPs_QH4KEArpOA
+2026-04-23 01:04:15.083 +02:00 [INF] HTTP GET /hubs/bots responded 101 in 2572.3589ms

@@ -1,1 +1,11 @@
 Nothing should be ignored based on the provided file changes. The modification of 'src/Sensum.Web/Program.cs' is a source code file and does not require any new ignore rules.
+Nothing should be ignored based on the provided file changes. The modification of 'src/Sensum.Web/Program.cs' is a source code file and does not require any .gitignore entries.
+.vs/Sensum.Framework/FileContentIndex
+.vs/Sensum.Framework/DesignTimeBuild
+src/Sensum.Console/bin/Debug
+src/Sensum.Console/obj/Debug
+src/Sensum.Framework/bin/Debug
+src/Sensum.Framework/obj/Debug
+src/Sensum.Web/bin/Debug
+src/Sensum.Web/obj/Debug
+src/Sensum.Web/appsettings.json
