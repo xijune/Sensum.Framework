@@ -70,9 +70,10 @@ internal static class Program
                 options.Scope.Add("email");
                 options.Scope.Add("profile");
                 options.CorrelationCookie.SecurePolicy = CookieSecurePolicy.None;
-                options.CorrelationCookie.SameSite = SameSiteMode.Lax;
+                options.CorrelationCookie.SameSite = SameSiteMode.None;
                 options.CorrelationCookie.HttpOnly = true;
                 options.CorrelationCookie.IsEssential = true;
+                options.CorrelationCookie.Domain = "localhost";
             });
             
             // Add health checks
