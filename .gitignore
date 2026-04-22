@@ -1,40 +1,37 @@
-```
+```gitignore
 # Build artifacts
 bin/
 obj/
 *.dll
 *.exe
 *.pdb
-*.nupkg
-*.snupkg
-*.cache
-*.compiled
-*.log
-*.tmp
+*.runtimeconfig.dev.json
 
 # Dependencies
 packages/
 node_modules/
-vendor/
 
-# User-specific files
-.vs/
+# Logs
+*.log
+
+# Environment
+.env
+.env.local
+*.env.*
+
+# Editor/IDE
+.vscode/
 .idea/
 *.user
 *.userosscache
 *.suo
 *.csproj.user
 
-# Environment specific settings
-.env
-.env.local
-*.env.*
-
-# OS generated files
+# OS
 .DS_Store
 Thumbs.db
-desktop.ini
 
-# Testing
-TestResults/
+# Test coverage
+coverage/
+*.coveragexml
 ```
