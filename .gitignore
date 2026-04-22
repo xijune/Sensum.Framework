@@ -32,3 +32,5 @@ coverage/
 *.coveragexml
 ```
 .vs/Sensum.Framework/FileContentIndex
+.vs/Sensum.Framework/CopilotIndices
+.vs/Sensum.Framework/DesignTimeBuild

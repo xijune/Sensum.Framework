@@ -4,6 +4,11 @@ using Microsoft.AspNetCore.SignalR;
 using Microsoft.IdentityModel.Tokens;
 using Serilog;
 using Sensum.Framework.Growtopia.Network;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authentication.Google;
+using Microsoft.Extensions.Logging;
 
 namespace Sensum.Web;
 
@@ -61,7 +66,7 @@ public static class ApiEndpoints
             return Results.Challenge(new AuthenticationProperties { RedirectUri = "/api/auth/google/callback" }, new[] { GoogleDefaults.AuthenticationScheme });
         });
         
-        app.MapGet("/api/auth/google/callback", async (HttpContext context, [FromServices] ILogger<Program> logger) =>
+        app.MapGet("/api/auth/google/callback", async (HttpContext context, [FromServices] Microsoft.Extensions.Logging.ILogger logger) =>
         {
             try
             {
