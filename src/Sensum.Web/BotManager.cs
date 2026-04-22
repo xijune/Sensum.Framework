@@ -1,3 +1,4 @@
+using Sensum.Console;
 using Sensum.Framework.Entities;
 using Sensum.Framework.Growtopia;
 using Sensum.Framework.Growtopia.Authentications;

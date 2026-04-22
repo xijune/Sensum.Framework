@@ -28,9 +28,6 @@ internal static class Program
         // Map API endpoints
         app.MapBotApi();
         
-        Console.WriteLine("Sensum Web Interface starting on http://localhost:5000");
-        Console.WriteLine("Press Ctrl+C to stop");
-        
         app.Run();
     }
 }
