@@ -49,8 +49,10 @@ public static class GoogleAuth
         var driver = setupDriver(client, proxy);
 
         driver.Navigate().GoToUrl($"https://login.growtopiagame.com/google/redirect?token={firstToken}");
-        tryAgain1:
-        if (waitForUrlChanged(driver, 1) == false)
+        
+        // Handle "too many people logging" retry logic
+        bool tooManyRetries = false;
+        while (waitForUrlChanged(driver, 1) == false)
         {
             try
             {
@@ -58,12 +60,13 @@ public static class GoogleAuth
                 if (textElement?.Text.Contains(too_many_logging_message) ?? false)
                 {
                     driver.Navigate().Refresh();
-                    goto tryAgain1;
+                    Thread.Sleep(5000);
+                    continue;
                 }
             }
             catch
             {
-                // Ignore
+                // Ignore - element not found
             }
             error = HttpRequestError.Timeout;
             DestroyDriver(client.LoginBuilder.TankIdName);

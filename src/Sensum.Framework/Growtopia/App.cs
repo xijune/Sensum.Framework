@@ -173,29 +173,43 @@ public static class App
                 { "platform", "0" },
                 { "protocol", Protocol.ToString() }
             };
+            
+            // Try primary server first, then fallback to alternative
             bool usePrimary = true;
-            tryAlternative:
-            HttpResponseMessage result = httpClient.PostAsync(usePrimary ? primary_server_data_uri : alternative_server_data_uri, new FormUrlEncodedContent(postData)).Result;
-            if (result.IsSuccessStatusCode)
+            HttpResponseMessage? result = null;
+            
+            while (usePrimary || result is null)
             {
-                error = HttpRequestError.None;
-                return result;
-            }
-            if (result.StatusCode == HttpStatusCode.Forbidden)
-            {
+                string uri = usePrimary ? primary_server_data_uri : alternative_server_data_uri;
+                result = httpClient.PostAsync(uri, new FormUrlEncodedContent(postData)).Result;
+                
+                if (result.IsSuccessStatusCode)
+                {
+                    error = HttpRequestError.None;
+                    return result;
+                }
+                
+                if (result.StatusCode == HttpStatusCode.Forbidden)
+                {
+                    if (usePrimary)
+                    {
+                        usePrimary = false;
+                        continue;
+                    }
+                    error = HttpRequestError.Forbidden;
+                    return null;
+                }
+                
                 if (usePrimary)
                 {
                     usePrimary = false;
-                    goto tryAlternative;
+                    continue;
                 }
-                error = HttpRequestError.Forbidden;
+                
+                error = HttpRequestError.Unknown;
                 return null;
             }
-            if (usePrimary)
-            {
-                usePrimary = false;
-                goto tryAlternative;
-            }
+            
             error = HttpRequestError.Unknown;
             return null;
         }

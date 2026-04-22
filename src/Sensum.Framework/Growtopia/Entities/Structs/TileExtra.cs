@@ -76,11 +76,14 @@ public unsafe class TileExtra(TileExtraType type)
                 Fruits = Memory.Read<byte>(data, ref offset, dataSize);
                 break;
             case TileExtraType.Mailbox:
-                goto case TileExtraType.ToyBox;
             case TileExtraType.Bulletin:
-                goto case TileExtraType.ToyBox;
+            case TileExtraType.DonationBox:
+            case TileExtraType.ToyBox: // ..
+                break;
             case TileExtraType.Dice:
-                goto case TileExtraType.GameBlock;
+            case TileExtraType.GameBlock:
+                Memory.Skip(ref offset, 1);
+                break;
             case TileExtraType.Provider:
                 TimeLeft = Memory.Read<int>(data, ref offset, dataSize);
                 if (tile.Foreground is 0x14c6 or 0x29A0)
@@ -95,10 +98,6 @@ public unsafe class TileExtra(TileExtraType type)
                 Memory.Skip(ref offset, 4);
                 Text = Memory.ReadString(data, ref offset, dataSize);
                 break;
-            case TileExtraType.DonationBox:
-                goto case TileExtraType.ToyBox;
-            case TileExtraType.ToyBox: // ..
-                break;
             case TileExtraType.Mannequin:
                 Text = Memory.ReadString(data, ref offset, dataSize);
                 Memory.Skip(ref offset, 23);
@@ -111,10 +110,12 @@ public unsafe class TileExtra(TileExtraType type)
                 break;
             case TileExtraType.GameGenerator: // ..
                 break;
-            case TileExtraType.Xenonite:
-                goto case TileExtraType.Solar;
             case TileExtraType.Dressup:
                 Memory.Skip(ref offset, 18);
+                break;
+            case TileExtraType.Xenonite:
+            case TileExtraType.Solar:
+                Memory.Skip(ref offset, 5);
                 break;
             case TileExtraType.Crystal:
                 tempInt = Memory.Read<ushort>(data, ref offset, dataSize);
@@ -146,7 +147,14 @@ public unsafe class TileExtra(TileExtraType type)
                 Memory.Skip(ref offset, 5);
                 break;
             case TileExtraType.Forge:
-                goto case TileExtraType.GeigerCharger;
+            case TileExtraType.SteamEngine:
+            case TileExtraType.LockBot:
+            case TileExtraType.BackgroundWeather:
+            case TileExtraType.SpiritStorage:
+            case TileExtraType.FossilPrep:
+            case TileExtraType.GeigerCharger:
+                Memory.Skip(ref offset, 4);
+                break;
             case TileExtraType.GivingTree:
                 Memory.Skip(ref offset, 6);
                 break;
