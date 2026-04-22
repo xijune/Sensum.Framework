@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sensum Bot Manager</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+            color: #fff;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: 30px;
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(90deg, #00d9ff, #00ff88);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+        
+        .add-bot-form {
+            background: rgba(255,255,255,0.05);
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .form-row input {
+            flex: 1;
+            padding: 12px 16px;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 8px;
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+            font-size: 1rem;
+        }
+        
+        .form-row input::placeholder {
+            color: rgba(255,255,255,0.5);
+        }
+        
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(90deg, #00d9ff, #00ff88);
+            color: #1a1a2e;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0,217,255,0.4);
+        }
+        
+        .btn-danger {
+            background: #ff4757;
+            color: #fff;
+        }
+        
+        .btn-success {
+            background: #2ed573;
+            color: #fff;
+        }
+        
+        .btn-warning {
+            background: #ffa502;
+            color: #fff;
+        }
+        
+        .bots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 20px;
+        }
+        
+        .bot-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .bot-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .bot-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+        
+        .status-badge {
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        
+        .status-connected {
+            background: rgba(46,213,115,0.2);
+            color: #2ed573;
+        }
+        
+        .status-disconnected {
+            background: rgba(255,71,87,0.2);
+            color: #ff4757;
+        }
+        
+        .bot-info {
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.7);
+        }
+        
+        .bot-actions {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .bot-actions .btn {
+            flex: 1;
+            padding: 10px;
+            font-size: 0.9rem;
+        }
+        
+        .console-output {
+            background: rgba(0,0,0,0.3);
+            border-radius: 8px;
+            padding: 15px;
+            height: 200px;
+            overflow-y: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
+        
+        .console-line {
+            margin-bottom: 5px;
+            word-break: break-word;
+        }
+        
+        .no-bots {
+            text-align: center;
+            padding: 60px 20px;
+            color: rgba(255,255,255,0.5);
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 40px;
+        }
+        
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: rgba(255,255,255,0.05);
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255,255,255,0.2);
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255,255,255,0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🤖 Sensum Bot Manager</h1>
+            <p>Manage and monitor your Growtopia bots from a single interface</p>
+        </header>
+        
+        <div class="add-bot-form">
+            <h2 style="margin-bottom: 15px;">Add New Bot</h2>
+            <div class="form-row">
+                <input type="text" id="growid" placeholder="GrowID">
+                <input type="password" id="password" placeholder="Password">
+                <button class="btn btn-primary" onclick="addBot()">Add Bot</button>
+            </div>
+        </div>
+        
+        <div id="bots-container" class="bots-grid">
+            <div class="loading">Loading bots...</div>
+        </div>
+    </div>
+
+    <script>
+        let bots = [];
+        
+        async function fetchBots() {
+            try {
+                const response = await fetch('/api/bots');
+                bots = await response.json();
+                renderBots();
+            } catch (error) {
+                console.error('Error fetching bots:', error);
+            }
+        }
+        
+        function renderBots() {
+            const container = document.getElementById('bots-container');
+            
+            if (bots.length === 0) {
+                container.innerHTML = '<div class="no-bots"><h2>No bots yet</h2><p>Add your first bot using the form above</p></div>';
+                return;
+            }
+            
+            container.innerHTML = bots.map(bot => `
+                <div class="bot-card">
+                    <div class="bot-header">
+                        <span class="bot-name">${escapeHtml(bot.name)}</span>
+                        <span class="status-badge ${bot.isConnected ? 'status-connected' : 'status-disconnected'}">
+                            ${bot.isConnected ? '● Connected' : '○ Disconnected'}
+                        </span>
+                    </div>
+                    <div class="bot-info">
+                        <div>World: ${bot.worldName || 'N/A'}</div>
+                        <div>Ping: ${bot.ping || 0}ms</div>
+                    </div>
+                    <div class="bot-actions">
+                        ${!bot.isConnected 
+                            ? `<button class="btn btn-success" onclick="connectBot('${bot.id}')">Connect</button>`
+                            : `<button class="btn btn-warning" onclick="disconnectBot('${bot.id}')">Disconnect</button>`
+                        }
+                        <button class="btn btn-danger" onclick="removeBot('${bot.id}')">Remove</button>
+                    </div>
+                    <div class="console-output" id="console-${bot.id}">
+                        ${bot.consoleMessages.map(msg => `<div class="console-line">${escapeHtml(msg)}</div>`).join('')}
+                    </div>
+                </div>
+            `).join('');
+            
+            // Scroll console to bottom
+            bots.forEach(bot => {
+                const consoleEl = document.getElementById(`console-${bot.id}`);
+                if (consoleEl) {
+                    consoleEl.scrollTop = consoleEl.scrollHeight;
+                }
+            });
+        }
+        
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+        
+        async function addBot() {
+            const growid = document.getElementById('growid').value;
+            const password = document.getElementById('password').value;
+            
+            if (!growid || !password) {
+                alert('Please enter both GrowID and Password');
+                return;
+            }
+            
+            try {
+                await fetch('/api/bots', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ growid, password })
+                });
+                document.getElementById('growid').value = '';
+                document.getElementById('password').value = '';
+                fetchBots();
+            } catch (error) {
+                alert('Error adding bot: ' + error.message);
+            }
+        }
+        
+        async function connectBot(id) {
+            try {
+                await fetch(`/api/bots/${id}/connect`, { method: 'POST' });
+                fetchBots();
+            } catch (error) {
+                alert('Error connecting bot: ' + error.message);
+            }
+        }
+        
+        async function disconnectBot(id) {
+            try {
+                await fetch(`/api/bots/${id}/disconnect`, { method: 'POST' });
+                fetchBots();
+            } catch (error) {
+                alert('Error disconnecting bot: ' + error.message);
+            }
+        }
+        
+        async function removeBot(id) {
+            if (!confirm('Are you sure you want to remove this bot?')) return;
+            
+            try {
+                await fetch(`/api/bots/${id}`, { method: 'DELETE' });
+                fetchBots();
+            } catch (error) {
+                alert('Error removing bot: ' + error.message);
+            }
+        }
+        
+        // Initial fetch and periodic updates
+        fetchBots();
+        setInterval(fetchBots, 2000);
+    </script>
+</body>
+</html>
