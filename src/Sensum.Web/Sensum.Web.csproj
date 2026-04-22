@@ -12,6 +12,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Sensum.Framework\Sensum.Framework.csproj" />
+      <ProjectReference Include="..\Sensum.Console\Sensum.Console.csproj" />
     </ItemGroup>
 
 </Project>
