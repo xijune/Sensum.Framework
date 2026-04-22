@@ -84,37 +84,12 @@ public unsafe class TileExtra(TileExtraType type)
             case TileExtraType.GameBlock:
                 Memory.Skip(ref offset, 1);
                 break;
-            case TileExtraType.Provider:
-                TimeLeft = Memory.Read<int>(data, ref offset, dataSize);
-                if (tile.Foreground is 0x14c6 or 0x29A0)
-                {
-                    Memory.Skip(ref offset, 4);
-                }
-                break;
-            case TileExtraType.AchievementBlock:
-                Memory.Skip(ref offset, 5);
-                break;
-            case TileExtraType.HeartMonitor:
-                Memory.Skip(ref offset, 4);
-                Text = Memory.ReadString(data, ref offset, dataSize);
-                break;
-            case TileExtraType.Mannequin:
-                Text = Memory.ReadString(data, ref offset, dataSize);
-                Memory.Skip(ref offset, 23);
-                break;
-            case TileExtraType.MagicEgg:
-                Memory.Skip(ref offset, 4);
-                break;
-            case TileExtraType.GameBlock:
-                Memory.Skip(ref offset, 1);
-                break;
             case TileExtraType.GameGenerator: // ..
                 break;
             case TileExtraType.Dressup:
                 Memory.Skip(ref offset, 18);
                 break;
             case TileExtraType.Xenonite:
-            case TileExtraType.Solar:
                 Memory.Skip(ref offset, 5);
                 break;
             case TileExtraType.Crystal:
@@ -144,16 +119,9 @@ public unsafe class TileExtra(TileExtraType type)
                 }
                 break;
             case TileExtraType.Solar:
-                Memory.Skip(ref offset, 5);
-                break;
             case TileExtraType.Forge:
-            case TileExtraType.SteamEngine:
-            case TileExtraType.LockBot:
-            case TileExtraType.BackgroundWeather:
-            case TileExtraType.SpiritStorage:
-            case TileExtraType.FossilPrep:
             case TileExtraType.GeigerCharger:
-                Memory.Skip(ref offset, 4);
+                Memory.Skip(ref offset, 5);
                 break;
             case TileExtraType.GivingTree:
                 Memory.Skip(ref offset, 6);
@@ -195,13 +163,12 @@ public unsafe class TileExtra(TileExtraType type)
                 Memory.Skip(ref offset, 4 + (tempInt * 4));
                 break;
             case TileExtraType.SteamEngine:
-                goto case TileExtraType.GeigerCharger;
             case TileExtraType.LockBot:
-                goto case TileExtraType.GeigerCharger;
             case TileExtraType.BackgroundWeather:
-                goto case TileExtraType.GeigerCharger;
             case TileExtraType.SpiritStorage:
-                goto case TileExtraType.GeigerCharger;
+            case TileExtraType.FossilPrep:
+                Memory.Skip(ref offset, 4);
+                break;
             case TileExtraType.DataBedrock:
                 Memory.Skip(ref offset, 21);
                 break;
@@ -227,8 +194,6 @@ public unsafe class TileExtra(TileExtraType type)
             case TileExtraType.StuffWeather:
                 Memory.Skip(ref offset, 9);
                 break;
-            case TileExtraType.FossilPrep:
-                goto case TileExtraType.GeigerCharger;
             case TileExtraType.DnaMachine: // ..
                 /* Memory.Skip(ref offset, 4);
                  Memory.ReadStringSafe(data, ref offset, dataSize); */ // Maybe
@@ -263,9 +228,6 @@ public unsafe class TileExtra(TileExtraType type)
                 break;
             case TileExtraType.SuperMusic:
                 Memory.ReadString(data, ref offset, dataSize);
-                Memory.Skip(ref offset, 4);
-                break;
-            case TileExtraType.GeigerCharger:
                 Memory.Skip(ref offset, 4);
                 break;
             case TileExtraType.AdventureReset: // ..
@@ -313,7 +275,6 @@ public unsafe class TileExtra(TileExtraType type)
                 Memory.Skip(ref offset, Memory.Read<int>(data, ref offset, dataSize) * 4);
                 break;
             case TileExtraType.AutoBreak:
-                goto case TileExtraType.AutoHarvest;
             case TileExtraType.AutoHarvest:
                 Memory.Skip(ref offset, 16);
                 break;
@@ -324,7 +285,10 @@ public unsafe class TileExtra(TileExtraType type)
                 Memory.Skip(ref offset, 12);
                 break;
             case TileExtraType.PhasedBlock:
-                goto case TileExtraType.FeedingBlock;
+            case TileExtraType.Completionist:
+            case TileExtraType.FeedingBlock:
+                Memory.Skip(ref offset, 4);
+                break;
             case TileExtraType.SafeVault: // ..
                 break;
             case TileExtraType.PhasedBlock2:
@@ -336,11 +300,6 @@ public unsafe class TileExtra(TileExtraType type)
             case TileExtraType.InfinityWeather:
                 Memory.Skip(ref offset, 4);
                 Memory.Skip(ref offset, Memory.Read<int>(data, ref offset, dataSize) * 4);
-                break;
-            case TileExtraType.Completionist: // ..
-                goto case TileExtraType.FeedingBlock;
-            case TileExtraType.FeedingBlock:
-                Memory.Skip(ref offset, 4);
                 break;
             case TileExtraType.KrankensBlock:
                 Memory.Skip(ref offset, 8);
