@@ -34,3 +34,4 @@ coverage/
 .vs/Sensum.Framework/FileContentIndex
 .vs/Sensum.Framework/CopilotIndices
 .vs/Sensum.Framework/DesignTimeBuild
+src/Sensum.Web/appsettings.json
