@@ -5,46 +5,36 @@ obj/
 *.dll
 *.exe
 *.pdb
-*.so
-*.dylib
-*.jar
-*.war
-*.class
-*.o
-*.obj
-*.out
+*.nupkg
+*.snupkg
+*.cache
+*.compiled
+*.log
+*.tmp
 
 # Dependencies
 packages/
 node_modules/
 vendor/
 
-# IDE files
+# User-specific files
 .vs/
-.vsc/
-.vscode/
 .idea/
-*.swp
-*.swo
+*.user
+*.userosscache
+*.suo
+*.csproj.user
 
-# Logs
-*.log
-
-# Environment
+# Environment specific settings
 .env
 .env.local
-.env.*
+*.env.*
 
 # OS generated files
 .DS_Store
 Thumbs.db
+desktop.ini
 
-# Coverage
-coverage/
-htmlcov/
-.coverage
-
-# Temporary files
-*.tmp
-*.temp
+# Testing
+TestResults/
 ```
